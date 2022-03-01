@@ -1,13 +1,113 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+    .sidebar-icon {
+        @apply relative flex items-center justify-center  h-16 w-16 mt-2 mb-2 mx-auto bg-gray-800 text-primary hover:bg-primary hover:text-white rounded-3xl hover:rounded-xl transition-all duration-75   ;
+    }
+
+    .sidebar-tooltip {
+        @apply absolute w-auto p-4 m-5 min-w-max top-20 rounded-md shadow-md text-white bg-gray-900 text-base font-bold transition-all duration-100 scale-0 origin-top;
+    }
+    .sidebar-dropdown{
+        @apply absolute w-auto p-4 m-5 right-1 justify-self-center min-w-max top-20 rounded-xl shadow-md text-white bg-gray-900 text-xl font-bold   menu origin-top  dropdown-content duration-500 
+    }
+    .sidebar{
+       @apply fixed top-0 w-full flex flex-row flex-auto  bg-gray-900 shadow-lg justify-center 
+    }
+
+
+.content-container {
+    @apply flex flex-col items-center justify-self-center
+    m-auto 
+    h-full
+    w-8/12
+    max-w-3xl
+    overflow-hidden  
+    ;
+  }
+  .fa-trash{
+    @apply fill-error m-1
+  }
+.content-list {
+    @apply flex flex-col items-center justify-self-center gap-10
+    h-full w-full 
+    mt-28 mb-8 mx-auto px-0   
+ 
+  }
+
+  .profile{
+    @apply flex justify-center 
+  }
+  .profile-card{
+      @apply text-lg   card shadow-2xl w-full h-full m-4 border-4 border-primary text-white font-bold
+      mt-40 p-2 bg-secondary  
+  }
+  .listing-card{
+    @apply text-lg   card shadow-2xl max-w-lg  h-full m-4 border-4 border-primary text-white font-bold
+    mt-40 p-2 bg-secondary 
+  }  
+  .post {
+    @apply card w-full h-auto
+    flex flex-col items-center justify-evenly justify-self-center
+    py-0  border-2 border-primary cursor-pointer bg-secondary  shadow-md  ;
+  }
+  .post-image{
+      @apply w-full h-full object-fill 
+  }
+
+  .post-selected {
+    @apply primary dark:bg-gray-900
+    shadow-md;
+  }
+
+  .post-content {
+    @apply w-full h-auto
+    flex flex-col justify-start 
+    ml-auto ;
+  }
+
+
+
+
+
+
+
+
+  .timestamp {
+    @apply text-xs text-left font-semibold text-gray-500 dark:text-gray-600 ml-2;
+  }
+.main{
+    @apply  flex-col
+    ;
+}
+.info  {
+    @apply w-full flex justify-between ;
+}
+.profile-grid{
+  @apply grid grid-cols-4 gap-3
+}
+.username {
+  @apply w-auto font-bold  text-lg pl-1  ;
+}
+.profile-grid .username {
+  @apply w-auto font-bold text-sm  ;
+}
+.info .user {
+    @apply flex items-center;
+}
+.likes{
+    @apply p-4 py-0 font-bold 
+}
+.profile-grid .likes{
+  @apply pr-1 py-0 font-bold text-sm 
+}
 }
