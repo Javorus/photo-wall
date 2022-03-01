@@ -81,8 +81,8 @@ function SignIn() {
           </form>
           <div className="text-center ">
             <OAuth />
-            <Link to="/sign-in" className=" btn btn-accent text-center">
-              Sign In Instead
+            <Link to="/sign-up" className=" btn btn-accent text-center">
+              Sign Up Instead
             </Link>
           </div>
         </div>
