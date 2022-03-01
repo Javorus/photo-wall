@@ -42,7 +42,7 @@ function SignIn() {
         <div className="profile">
         <div className="listing-card ">
           <header>
-            <p className="pb-4 content-center text-center text-xl">Sign Up</p>
+            <p className="pb-4 content-center text-center text-xl">Sign In</p>
           </header>
           <form onSubmit={onSubmit}>
            
