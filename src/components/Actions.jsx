@@ -4,13 +4,10 @@ import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import {
   updateDoc,
-  collection,
   doc,
-  FieldValue,
   arrayUnion,
   arrayRemove,
-    Timestamp,
-  serverTimestamp, add
+  Timestamp,
 } from "firebase/firestore";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -28,24 +25,25 @@ function Actions({ docId, likesArray, priority }) {
   const weekOldTimestamp = Timestamp.fromMillis(
     nowTimestamp.toMillis() - 604800000
   );
-  
 
   const handleToggleLiked = async () => {
     setToggleLiked((toggleLiked) => !toggleLiked);
 
     if (isMounted) {
-        const nowTimestamp = Timestamp.now();
-        const lowerPriority = Timestamp.fromMillis(priority.toMillis() - 604800000);
-        const higherPriority = Timestamp.fromMillis( priority.toMillis() + 604800000);
+      const nowTimestamp = Timestamp.now();
+      const lowerPriority = Timestamp.fromMillis(
+        priority.toMillis() - 604800000
+      );
+      const higherPriority = Timestamp.fromMillis(
+        priority.toMillis() + 604800000
+      );
       const listingsRef = doc(db, "listings", docId);
-      
+
       onAuthStateChanged(auth, (user) => {
         if (user) {
-    
           updateDoc(listingsRef, {
-              likes: toggleLiked ? arrayRemove(user.uid) : arrayUnion(user.uid),
-              priority:toggleLiked ? lowerPriority:higherPriority
-                
+            likes: toggleLiked ? arrayRemove(user.uid) : arrayUnion(user.uid),
+            priority: toggleLiked ? lowerPriority : higherPriority,
           });
         } else {
           navigate("/sign-in");
@@ -106,7 +104,7 @@ function Actions({ docId, likesArray, priority }) {
         </div>
       </div>
       <div className="likes">
-          {likes === 1 ? `${likes} like` : `${likes} likes`}
+        {likes === 1 ? `${likes} like` : `${likes} likes`}
       </div>
     </>
   );
@@ -115,6 +113,6 @@ function Actions({ docId, likesArray, priority }) {
 export default Actions;
 Actions.propTypes = {
   docId: PropTypes.string.isRequired,
-    likesArray: PropTypes.array.isRequired,
-  timestamp: PropTypes.instanceOf(Timestamp)
+  likesArray: PropTypes.array.isRequired,
+  timestamp: PropTypes.instanceOf(Timestamp),
 };

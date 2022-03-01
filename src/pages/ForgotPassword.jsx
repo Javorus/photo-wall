@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
-//import { toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 
 function ForgotPassword() {
@@ -16,10 +16,10 @@ function ForgotPassword() {
       const auth = getAuth()
 
       await sendPasswordResetEmail(auth, email)
-     // toast.success('Email sent successfully')
+      toast.success('Email sent successfully')
       
     } catch (error) {
-      //toast.error('Could not send reset email')
+      toast.error('Could not send reset email')
     }
   }
 

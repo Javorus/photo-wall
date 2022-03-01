@@ -2,8 +2,7 @@ import {useLocation, useNavigate} from 'react-router-dom'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase.config'
-//import { toast } from 'react-toastify'
-import googleIcon from '../assets/svg/googleIcon.svg'
+import { toast } from 'react-toastify'
 import { FaGoogle } from 'react-icons/fa'
 
 function OAuth() {
@@ -30,7 +29,7 @@ function OAuth() {
             navigate('/')
 
         } catch (error) {
-            //toast.error('Could not authorize your account with Google')
+            toast.error('Could not authorize your account with Google')
         }
     }
 

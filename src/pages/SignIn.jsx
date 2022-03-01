@@ -75,7 +75,7 @@ function SignIn() {
             <div className="text-center pb-8">
               <p className="text-center"></p>
               <button className="btn btn-primary w-full">
-                Sign up <i className="fa fa-upload" aria-hidden="true"></i>
+                Sign in <i className="fa fa-upload" aria-hidden="true"></i>
               </button>
             </div>
           </form>

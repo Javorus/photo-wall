@@ -1,41 +1,37 @@
 import { Link } from "react-router-dom";
-import { ReactComponent as DeleteIcon } from "../assets/svg/deleteIcon.svg";
-import bedIcon from "../assets/svg/bedIcon.svg";
-import bathtubIcon from "../assets/svg/bathtubIcon.svg";
-import { FaRegHeart } from "react-icons/fa";
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 import Actions from "./Actions";
-import { FaTrash } from 'react-icons/fa'
+import { FaTrash } from "react-icons/fa";
 function ListingItem({ listing, id, onDelete }) {
-    console.log(onDelete)
-    return (
-      <li className="post">
-        <div className="info">
-          <div className="user">
-            <Link to={`/user/${listing.userRef}`}>
-              <div className="username">{listing.username}</div>
-            </Link>
-           
-          </div>
-          {onDelete && (<FaTrash className='fa-trash'
-             onClick={() => onDelete(listing.id, listing.name)}/>)}
+  console.log(onDelete);
+  return (
+    <li className="post">
+      <div className="info">
+        <div className="user">
+          <Link to={`/user/${listing.userRef}`}>
+            <div className="username">{listing.username}</div>
+          </Link>
         </div>
-        <Link to={`/category/${id}`} className="post-image">
-          <img
-            src={listing.imgUrls[0]}
-            alt={listing.name}
-            className="post-image"
+        {onDelete && (
+          <FaTrash
+            className="fa-trash"
+            onClick={() => onDelete(listing.id, listing.name)}
           />
-        </Link>
-        <div className="post-content">
-          <Actions
-            docId={id}
-            likesArray={listing.likes}
-            priority={listing.priority}
-          />
-          {/* <svg
+        )}
+      </div>
+      <Link to={`/category/${id}`} className="post-image">
+        <img
+          src={listing.imgUrls[0]}
+          alt={listing.name}
+          className="post-image"
+        />
+      </Link>
+      <div className="post-content">
+        <Actions
+          docId={id}
+          likesArray={listing.likes}
+          priority={listing.priority}
+        />
+        {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
             fill="red"
@@ -50,10 +46,9 @@ function ListingItem({ listing, id, onDelete }) {
           </svg>
 
           <p className="likes">{listing.likes.length} likes</p> */}
-        </div>
-      </li>
-    );
-  }
-
+      </div>
+    </li>
+  );
+}
 
 export default ListingItem;
