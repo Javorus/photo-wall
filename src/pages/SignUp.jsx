@@ -110,13 +110,13 @@ function SignUp() {
           <div className="text-center pb-8">
             <p className="text-center"></p>
             <button className="btn btn-primary w-full">
-              Sign up <i class="fa fa-upload" aria-hidden="true"></i>
+              Sign up <i className="fa fa-upload" aria-hidden="true"></i>
             </button>
           </div>
         </form>
         <div className="text-center ">
           <OAuth />
-          <Link to="/sign-in" className=" btn btn-secondary text-center">
+          <Link to="/sign-in" className=" btn btn-accent text-center">
             Sign In Instead
           </Link>
         </div>

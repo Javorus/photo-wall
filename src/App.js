@@ -6,7 +6,6 @@ import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
 import Explore from './pages/Explore'
 import Hot from './pages/Hot'
-import Wall from './pages/Wall'
 import Profile from './pages/Profile.jsx'
 import SignIn from './pages/SignIn.jsx'
 import SignUp from './pages/SignUp'
@@ -14,7 +13,7 @@ import UserPage from './pages/UserPage'
 import CreateListing from './pages/CreateListing'
 import ForgotPassword from './pages/ForgotPassword.jsx'
 import { ToastContainer } from 'react-toastify'
-import Test from './pages/Test'
+
 
 function App() {
   return (
@@ -22,8 +21,7 @@ function App() {
       <Router>
        
         <Routes>
-          
-          <Route path='/wall' element={<Wall/>}/>
+  
           <Route path='/profile' element={<PrivateRoute/>}>
             <Route path='/profile' element={<Profile/>}/>
           </Route>
@@ -40,7 +38,7 @@ function App() {
           <Route path='/sign-up' element={<SignUp/>}/>
           <Route path='/forgot-password' element={<ForgotPassword/>}/>
           <Route path='/create-listing' element={<CreateListing />} />
-          <Route path='/test' element={<Test />} />
+          
           
         </Routes>
         <Navbar/>

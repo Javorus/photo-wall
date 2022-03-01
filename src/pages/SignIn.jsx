@@ -4,8 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import OAuth from '../components/OAuth'
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
-import visibilityIcon from '../assets/svg/visibilityIcon.svg'
-
+import { FaEye } from "react-icons/fa";
 function SignIn() {
     const [showPassword, setShowPassword] = useState(false)
     const [formData, setFormData] = useState({
@@ -40,59 +39,54 @@ function SignIn() {
         
     }
     return (
-        <div className="grid justify-center text-lg  text-white font-bold">
-            <div className="card shadow-2xl w-full h-full m-4 border-4 border-primary mt-40 p-2 bg-gray-700">
-                <header className ='justify-center items-center grid'>
-                    <p className="text-2xl ustify-center items-center grid"> Welcome Back!</p>
-                </header>
-                <form onSubmit={onSubmit}>
-                    <input
-                        type="email"
-                        className="emailInput"
-                        placeholder="Email"
-                        id="email"
-                        value={email}
-                        onChange={onChange}
-                    />
-                    <div className="InputDiv">
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            className="passwordInput"
-                            placeholder="Password"
-                            id="password"
-                            value={password}
-                            onChange={onChange}
-                        />
-                        <img
-                            src={visibilityIcon}
-                            alt="show password"
-                            className="showPassword"
-                            onClick={() => setShowPassword((prevState) => !prevState)}
-                        />
-                    </div>
-                    
-                    <Link to='/forgot-password' className="forgotPasswordLink">
-                        Forgot Password
-                    </Link>
-
-                    <div className="signInBar">
-                        <p className="signInText">
-                            Sign in
-                        </p>
-                        <button className="signInButton">
-                            <ArrowRightIcon fill='#ffffff' width='34px' height = '34px'/>
-                        </button>
-                    </div>
-                </form>
-
-                <OAuth/>
-                <Link to='/sign-up' className="registerLink">
-                    Sign Up Insted
-                </Link>
-
+        <div className="profile">
+        <div className="listing-card ">
+          <header>
+            <p className="pb-4 content-center text-center text-xl">Sign Up</p>
+          </header>
+          <form onSubmit={onSubmit}>
+           
+            <div className="">
+              <input
+                type="email"
+                className="input input-primary w-full text-black text-lg font-semibold"
+                placeholder="Email"
+                id="email"
+                value={email}
+                onChange={onChange}
+              />
             </div>
-            
+            <FaEye
+              className="hover:text-primary "
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            ></FaEye>
+  
+            <div className="passwordInputDiv flex flex-row pb-4">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="input input-primary w-full text-black text-lg font-semibold"
+                placeholder="Password"
+                id="password"
+                value={password}
+                onChange={onChange}
+              />
+            </div>
+  
+            <div className="text-center pb-8">
+              <p className="text-center"></p>
+              <button className="btn btn-primary w-full">
+                Sign up <i className="fa fa-upload" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+          <div className="text-center ">
+            <OAuth />
+            <Link to="/sign-in" className=" btn btn-accent text-center">
+              Sign In Instead
+            </Link>
+          </div>
         </div>
+      </div>
     );
   }
   

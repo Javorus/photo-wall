@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase.config";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import Test from "./Test";
+
 import { FaMapMarker } from "react-icons/fa";
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
@@ -182,7 +182,6 @@ function CreateListing() {
     delete formDataCopy.images;
 
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
-    print(docRef);
     setLoading(false);
     toast.success("Listing saved");
     navigate(`/image/${docRef.id}`);
